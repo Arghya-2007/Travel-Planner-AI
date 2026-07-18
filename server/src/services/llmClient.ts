@@ -102,7 +102,14 @@ function extractJson(text: string): unknown {
 // (Swap to Anthropic later by changing this file only)
 // ──────────────────────────────────────────────
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+if (!process.env.GEMINI_API_KEY) {
+  console.error("=================================================");
+  console.error("CRITICAL ERROR: GEMINI_API_KEY is missing from environment variables!");
+  console.error("Please ensure it is set exactly as 'GEMINI_API_KEY' in your Render backend settings.");
+  console.error("=================================================");
+}
+
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || 'MISSING_KEY' });
 
 type LlmCallResult =
   | { success: true; data: ItineraryResponse }
