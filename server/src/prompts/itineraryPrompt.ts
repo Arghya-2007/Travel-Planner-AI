@@ -1,4 +1,4 @@
-import type { ItineraryRequest } from '../types/itinerary';
+import type { ItineraryRequest } from '../types/itinerary.js';
 
 /**
  * Builds the system + user prompt pair for the Anthropic Claude call.

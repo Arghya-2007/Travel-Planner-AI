@@ -49,6 +49,8 @@ export default function Landing({ onStart }: LandingProps) {
             key={src}
             src={src}
             alt=""
+            loading={index === 0 ? "eager" : "lazy"}
+            fetchPriority={index === 0 ? "high" : "auto"}
             className="absolute inset-0 w-full h-full object-cover object-center"
             initial={{ opacity: 0 }}
             animate={{

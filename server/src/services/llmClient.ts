@@ -1,10 +1,10 @@
 import { GoogleGenAI } from '@google/genai';
-import type { ItineraryRequest, ItineraryResponse } from '../types/itinerary';
+import type { ItineraryRequest, ItineraryResponse } from '../types/itinerary.js';
 import {
   buildSystemPrompt,
   buildUserPrompt,
   buildRetryMessage,
-} from '../prompts/itineraryPrompt';
+} from '../prompts/itineraryPrompt.js';
 
 // ──────────────────────────────────────────────
 // Validation helpers

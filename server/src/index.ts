@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import itineraryRouter from './routes/generateItinerary';
+import itineraryRouter from './routes/generateItinerary.js';
 
 dotenv.config();
 

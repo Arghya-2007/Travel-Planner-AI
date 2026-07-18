@@ -5,7 +5,8 @@ export async function generateItinerary(data: ItineraryRequest): Promise<Itinera
   const timeoutId = setTimeout(() => controller.abort(), 28000); // 28 seconds
 
   try {
-    const response = await fetch('/api/generate-itinerary', {
+    const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+    const response = await fetch(`${baseUrl}/api/generate-itinerary`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

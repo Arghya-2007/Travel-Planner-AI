@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import type { ItineraryRequest, ApiError } from '../types/itinerary';
-import { generateItinerary, LlmValidationError } from '../services/llmClient';
+import type { ItineraryRequest, ApiError } from '../types/itinerary.js';
+import { generateItinerary, LlmValidationError } from '../services/llmClient.js';
 
 const router = Router();
 
