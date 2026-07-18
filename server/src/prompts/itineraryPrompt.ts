@@ -99,7 +99,8 @@ Rules:
 3. ${req.destination ? `destinationSuggestions must be null and finalDestination must equal "${req.destination}".` : 'destinationSuggestions must contain exactly 3 suggestions.'}
 4. Costs should be realistic for the destination and budget tier, not placeholder round numbers.
 5. Packing checklist must reflect destination climate/season and trip type, not a generic list.
-6. Return ONLY the JSON object. No prose, no markdown fences.`;
+6. Return ONLY the JSON object. No prose, no markdown fences.
+7. CRITICAL: Generate EXACTLY 3 blocks per day (1 morning, 1 afternoon, 1 evening). If the pace is packed, combine multiple activities into a single block's description. Do NOT generate more than 3 blocks per day.`;
 }
 
 /**
