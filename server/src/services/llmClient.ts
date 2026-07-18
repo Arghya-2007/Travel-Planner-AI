@@ -85,13 +85,17 @@ function validateItinerary(
 function extractJson(text: string): unknown {
   let cleaned = text.trim();
 
-  // Strip markdown code fences if present
-  if (cleaned.startsWith('```')) {
-    // Remove opening fence (```json or ```)
-    cleaned = cleaned.replace(/^```(?:json)?\s*\n?/, '');
-    // Remove closing fence
-    cleaned = cleaned.replace(/\n?```\s*$/, '');
-    cleaned = cleaned.trim();
+  // Try to find a JSON markdown block anywhere in the text
+  const match = cleaned.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+  if (match) {
+    cleaned = match[1].trim();
+  } else {
+    // Fallback: extract substring from first '{' to last '}'
+    const firstBrace = cleaned.indexOf('{');
+    const lastBrace = cleaned.lastIndexOf('}');
+    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+      cleaned = cleaned.substring(firstBrace, lastBrace + 1);
+    }
   }
 
   return JSON.parse(cleaned);
@@ -138,6 +142,7 @@ async function attemptLlmCall(
       systemInstruction: systemPrompt,
       temperature: 0.7,
       maxOutputTokens: computeMaxTokens(req.durationDays),
+      responseMimeType: 'application/json',
     },
   });
 
