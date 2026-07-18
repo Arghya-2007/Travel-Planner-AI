@@ -132,7 +132,7 @@ async function attemptLlmCall(
   }
 
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.5-flash',
     contents: fullPrompt,
     config: {
       systemInstruction: systemPrompt,
@@ -140,7 +140,6 @@ async function attemptLlmCall(
       maxOutputTokens: computeMaxTokens(req.durationDays),
     },
   });
-
 
   // Extract text from response
   const text = response.text;
