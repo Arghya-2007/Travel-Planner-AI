@@ -10,7 +10,7 @@ const ITINERARY_SCHEMA = `{
     {
       "name": "string",
       "country": "string",
-      "whyItFits": "string (1-2 sentences)",
+      "whyItFits": "string (max 1 short sentence)",
       "bestSeason": "string"
     }
   ] | null,
@@ -25,8 +25,8 @@ const ITINERARY_SCHEMA = `{
       "blocks": [
         {
           "timeOfDay": "'morning' | 'afternoon' | 'evening'",
-          "activity": "string (short name)",
-          "description": "string (1-2 sentences)",
+          "activity": "string (max 5 words)",
+          "description": "string (max 1 short sentence)",
           "estimatedDuration": "string (e.g. '2 hours')",
           "estimatedCost": { "amount": "number", "currency": "string" }
         }
