@@ -141,7 +141,7 @@ async function attemptLlmCall(
     config: {
       systemInstruction: systemPrompt,
       temperature: 0.7,
-      maxOutputTokens: computeMaxTokens(req.durationDays),
+      maxOutputTokens: 8192,
       responseMimeType: 'application/json',
     },
   });
