@@ -156,10 +156,11 @@ async function attemptLlmCall(
   let parsed: unknown;
   try {
     parsed = extractJson(text);
-  } catch {
+  } catch (err: any) {
+    console.error("====== FULL TEXT DUMP ======\n" + text + "\n=============================");
     return {
       success: false,
-      reason: `JSON parse failed: ${text.slice(0, 200)}...`,
+      reason: `JSON parse failed (${err.message}): ${text.slice(0, 200)}...`,
     };
   }
 
